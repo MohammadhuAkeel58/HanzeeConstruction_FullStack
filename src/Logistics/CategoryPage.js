@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../Config/firebase";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
-import { Link } from "react-router-dom";
 import { PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer";
 
 function CategoryPage({
@@ -24,35 +23,6 @@ function CategoryPage({
       );
     });
   }, []);
-
-  // const [selectedItemsLogistic, setSelectedItemsLogistic] = useState([]);
-  // const [totalPriceLogistic, setTotalPriceLogistic] = useState(0);
-
-  // Function to handle adding a product
-  const handleAddProduct = (item) => {
-    const updatedItems = [...selectedItemsLogistic, item];
-    setSelectedItemsLogistic(updatedItems);
-    calculateTotalPriceLogistic(updatedItems);
-  };
-
-  // Function to handle removing a product
-  const handleRemoveProduct = (item) => {
-    const updatedItems = selectedItemsLogistic.filter(
-      (selectedItem) => selectedItem.id !== item.id
-    );
-    setSelectedItemsLogistic(updatedItems);
-    calculateTotalPriceLogistic(updatedItems);
-  };
-
-  // Function to calculate the total price
-  const calculateTotalPriceLogistic = (items) => {
-    const totalPriceLogistic = items.reduce(
-      (total, item) => total + Number(item.data.price),
-      0
-    );
-    setTotalPriceLogistic(totalPriceLogistic);
-    setLogisticPayment(totalPriceLogistic);
-  };
 
   // Functionto Generate a Report
   const generateReport = () => {

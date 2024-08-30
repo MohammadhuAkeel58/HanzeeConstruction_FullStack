@@ -1,11 +1,10 @@
 import { useState } from "react";
 import LogisticsList from "../Logistics/LogisticsList";
 import EditLogistics from "../Logistics/EditLogistics";
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../Config/firebase";
 import MakeSure from "../Components/MakeSure";
 function Logistics({ id, vno, vid, vtype, completed, vCategory, vImg, price }) {
-  const [checked, setChecked] = useState(completed);
   const [open, setOpen] = useState({ edit: false, view: false });
   const [popup, setPopup] = useState(null);
 
@@ -13,17 +12,6 @@ function Logistics({ id, vno, vid, vtype, completed, vCategory, vImg, price }) {
     setOpen({ edit: false, view: false });
   };
 
-  /* function to update document in firestore */
-  const handleCheckedChange = async () => {
-    const taskDocRef = doc(db, "Logistics", id);
-    try {
-      await updateDoc(taskDocRef, {
-        completed: checked,
-      });
-    } catch (err) {
-      alert(err);
-    }
-  };
   /* function to delete a document from firstore */
   const handleDelete = async () => {
     const taskDocRef = doc(db, "Logistics", id);
