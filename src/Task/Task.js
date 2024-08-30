@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TaskItem from "../Task/TaskItem";
 import EditTask from "../Task/EditTask";
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../Config/firebase";
 import MakeSure from "../Components/MakeSure";
 
